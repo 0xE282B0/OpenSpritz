@@ -6,6 +6,7 @@
 
     var internals = {
         position: 0,
+        sentence_break: [],
         split_text: [],
         state: 'stopped',
         wpm: 250
@@ -38,12 +39,17 @@
 
         internals.text = text;
         internals.split_text = text.split(/\s+/);
+        internals.sentence_break.length = 0;
         internals.position = 0;
 
-        open_spritz.start();
+        setTimeout(open_spritz.start, 1000);
     };
 
     open_spritz.start = function() {
+        if (internals.state === 'running') {
+            return;
+        }
+
         internals.state = 'running';
         displayWord();
     };
@@ -62,6 +68,13 @@
 
     open_spritz.getPosition = function() {
         return internals.position;
+    };
+
+    open_spritz.setPosition = function(position) {
+        internals.position = position;
+        if (position > internals.split_text.length - 1) {
+            internals.position = internals.split_text.length - 1;
+        }
     };
 
     open_spritz.getLength = function() {
@@ -98,15 +111,16 @@
         var delay = 60 * 1000 / internals.wpm;
 
         var lastLetter = word.slice(word.length - 1);
-        if (lastLetter === ',') {
-            delay += delay * 1.3;
+        if ([',', ':'].indexOf(lastLetter) !== -1) {
+            // delay += delay * 1.3;
         }
 
         // Looking for punction in the last two characters.  Could be !" or ?) or just . at the end.  We need a pause for that.
         if (word.length > 2) {
             var lastTwoLetters = word.slice(word.length - 2);
             if (['?', '!', '.', ';'].indexOf(lastTwoLetters) !== -1) {
-                delay += delay * 1.8;
+                // delay += delay * 1.8;
+                internals.sentence_break.push(internals.position - 1);
             }
         }
 
