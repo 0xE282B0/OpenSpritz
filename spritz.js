@@ -1,11 +1,12 @@
 /*
 	Copyright 2014 Mark Bradshaw (mark.bradshaw@gmail.com), Joel Fouse (jfouse@gmail.com)
 */
-
 (function() {
     var open_spritz = {};
 
     var internals = {
+        position: 0,
+        split_text: [],
         state: 'stopped',
         wpm: 250
     };
@@ -59,6 +60,14 @@
         }
     };
 
+    open_spritz.getPosition = function() {
+        return internals.position;
+    };
+
+    open_spritz.getLength = function() {
+        return internals.split_text.length;
+    };
+
     /******* PRIVATE **********/
 
     function displayWord() {
@@ -68,6 +77,9 @@
 
         if (internals.position >= internals.split_text.length) {
             internals.state = 'stopped';
+            if (internals.onEnd !== undefined && typeof internals.onEnd === 'function') {
+                internals.onEnd();
+            }
             return;
         }
 
