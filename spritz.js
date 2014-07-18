@@ -45,17 +45,23 @@
         setTimeout(open_spritz.start, 1000);
     };
 
+    open_spritz.onstart = function() {};
+
     open_spritz.start = function() {
         if (internals.state === 'running') {
             return;
         }
 
         internals.state = 'running';
+        open_spritz.onstart();
         displayWord();
     };
 
+    open_spritz.onstop = function() {};
+
     open_spritz.stop = function() {
         internals.state = 'stopped';
+        open_spritz.onstop();
     };
 
     open_spritz.toggle = function() {
@@ -65,6 +71,12 @@
             open_spritz.stop();
         }
     };
+
+    open_spritz.getState = function (){
+        return internals.state;
+    };
+
+    open_spritz.onupdate = function(){};
 
     open_spritz.getPosition = function() {
         return internals.position;
@@ -123,7 +135,7 @@
                 internals.sentence_break.push(internals.position - 1);
             }
         }
-
+        open_spritz.onupdate();
         setTimeout(displayWord, delay);
     }
 
