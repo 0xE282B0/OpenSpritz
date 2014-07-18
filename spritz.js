@@ -66,6 +66,10 @@
         }
     };
 
+    open_spritz.getState = function (){
+        return internals.state;
+    };
+
     open_spritz.getPosition = function() {
         return internals.position;
     };
