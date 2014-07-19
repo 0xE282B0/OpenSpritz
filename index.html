@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<meta charset="utf-8"></meta>
+<meta charset="utf-8" />
     <head>
         <title>OpenSpritz</title>
         <link href='index.css' rel='stylesheet' type='text/css'>   
@@ -25,20 +25,31 @@
             <div class='button'>
                 <a href="javascript:(function(){ cb = function(){ create_spritz(); }; var script=document.createElement('SCRIPT');script.src='https://miserlou.github.io/OpenSpritz/spritz.js?callback=cb'; script.onload=cb; document.body.appendChild(script);})();">
                     OpenSpritz this!
-                <a />
+                </a>
             </div>
 
             <div class='button'>
                 <a href="javascript:(function(){ cb = function(){ create_spritz(); }; var script=document.createElement('SCRIPT');script.src='https://rawgithub.com/Miserlou/OpenSpritz/dev/spritz.js?callback=cb'; script.onload=cb; document.body.appendChild(script);})();">
                     OpenSpritz this! (Remote Dev)
-                <a />
+                </a>
             </div>
 
-            <div class='button'>
-                <a href="javascript:(function(){ cb = function(){ create_spritz(); }; var script=document.createElement('SCRIPT');script.src='spritz.js?callback=cb'; script.onload=cb; document.body.appendChild(script);})();">
+        <div class='button'>
+            <a href="javascript:(function(){
+                  cb = function(){ create_spritz();};
+                  cb1 = function(){
+                    var script=document.createElement('SCRIPT');
+                    script.src='spritz.js?callback=cb';
+                    script.onload=cb;
+                    document.body.appendChild(script);};
+
+                var script=document.createElement('SCRIPT');
+                script.src='spritz_wrapper.js?callback=cb1';
+                script.onload=cb1;
+                document.body.appendChild(script);})();">
                     OpenSpritz this! (Local)
-                <a />
-            </div>
+            </a>
+        </div>
 
             <br /><br />
 
