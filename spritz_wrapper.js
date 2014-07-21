@@ -22,7 +22,7 @@ function create_spritz(){
         // RawGit's CDN usage:
         // "Since files are not refreshed after the first request,
         // it's best to use a specific tag or commit URL, not a branch URL."
-        getURL("https://cdn.rawgit.com/Miserlou/OpenSpritz/9e92c605032be16c986ed699d68e0acd3534e6b1/spritz.html", function(data){
+        getURL("https://rawgit.com/smielke/OpenSpritz/experimental/spritz.html", function(data){
             var spritzContainer = document.getElementById("spritz_container");
 
             if (!spritzContainer) {
@@ -40,6 +40,10 @@ function create_spritz(){
                     document.getElementById("spritz_toggle").textContent = "Play";
                 };
                 open_spritz.assignElement(document.getElementById("spritz_result"));
+                open_spritz.onupdate = function(){
+                    var progressBar = document.getElementById("spritz_progress_bar");
+                    progressBar.style.width = (100 - ((open_spritz.getPosition() / progressBar.max) * 100)) + "%";
+                }
             }
 
             document.getElementById("spritz_selector").addEventListener("change", function() {
@@ -127,6 +131,7 @@ function spritzifyURL(){
             text_content = text_content.replace(/\?/g, '? ');
             text_content = text_content.replace(/\!/g, '! ');
             open_spritz.spritzify( text_content );
+            document.getElementById("spritz_progress_bar").max = open_spritz.getLength();
         });
 
 }
@@ -137,6 +142,7 @@ function spritz(){
     var selection = getSelectionText();
     if(selection){
         open_spritz.spritzify(selection);
+        document.getElementById("spritz_progress_bar").max = open_spritz.getLength();
     }
     else{
         spritzifyURL();

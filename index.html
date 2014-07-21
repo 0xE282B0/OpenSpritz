@@ -47,7 +47,24 @@
                 script.src='spritz_wrapper.js?callback=cb1';
                 script.onload=cb1;
                 document.body.appendChild(script);})();">
-                    OpenSpritz this! (Local)
+                OpenSpritz this! (Local)
+            </a>
+        </div>
+
+        <div class='button'>
+            <a href="javascript:(function(){
+                  cb = function(){ create_spritz();};
+                  cb1 = function(){
+                    var script=document.createElement('SCRIPT');
+                    script.src='https://rawgit.com/smielke/OpenSpritz/experimental/spritz.js?callback=cb';
+                    script.onload=cb;
+                    document.body.appendChild(script);};
+
+                var script=document.createElement('SCRIPT');
+                script.src='https://rawgit.com/smielke/OpenSpritz/experimental/spritz_wrapper.js?callback=cb1';
+                script.onload=cb1;
+                document.body.appendChild(script);})();">
+                OpenSpritz this! (smielke experimental)
             </a>
         </div>
 

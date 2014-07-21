@@ -1,5 +1,5 @@
 body{
-    margin: 0px;
+    margin: 0;
 }
 
 #spritz_holder{
@@ -36,11 +36,16 @@ body{
 #spritz_result{
     text-align: center;
     font-family: 'Droid Sans Mono', sans-serif;
-    /* 600px+; small tablet portrait */
-    padding-top: 9px;
-    padding-bottom: 9px;
     min-height: 40px;
     font-size: 32px;
+    padding: 20px 0;
+
+    border-top: 4px solid #DDDDDD;
+    border-bottom: 4px solid #DDDDDD;
+}
+
+#spritz_progress_wrapper {
+    text-align: center;
 }
 
 #guide_top, #guide_bottom{
@@ -98,7 +103,7 @@ body{
 @media (max-width: 599px) {
 
     #spritz_holder{
-        width: 320
+        width: 320px;
         padding-top: 4px;
         padding-bottom: 6px;
         margin-bottom: 6px;
