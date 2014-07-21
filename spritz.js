@@ -117,7 +117,7 @@
         var end = word.slice(pivot, word.length);
         var endPad = repeat('&nbsp;', 11 - (word.length - pivot));
 
-        internals.el.innerHTML = startPad + start + '<span class="OSCursor">' + letter + '</span>' + end + endPad;
+        internals.el.innerHTML = startPad + start + '<span class="spritz_pivot">' + letter + '</span>' + end + endPad;
 
         // standard delay
         var delay = 60 * 1000 / internals.wpm;

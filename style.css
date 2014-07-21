@@ -48,6 +48,12 @@ body{
     text-align: center;
 }
 
+#spritz_progress_bar {
+    margin: auto;
+    margin-top: 20px;
+    border-bottom: 1px solid blue;
+}
+
 #guide_top, #guide_bottom{
     text-align: center;
     font-family: 'Droid Sans Mono', sans-serif;
