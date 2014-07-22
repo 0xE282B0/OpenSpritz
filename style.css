@@ -132,6 +132,7 @@ body{
         font-size: 22px;
         padding-top: 11px;
         padding-bottom: 6px;
+        white-space: nowrap;
     }
 
     #guide_top, #guide_bottom{
