@@ -42,6 +42,7 @@ body{
 
     border-top: 4px solid #DDDDDD;
     border-bottom: 4px solid #DDDDDD;
+    white-space: nowrap;
 }
 
 #spritz_progress_wrapper {
