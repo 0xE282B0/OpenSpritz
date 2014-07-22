@@ -124,14 +124,14 @@
 
         var lastLetter = word.slice(word.length - 1);
         if ([',', ':'].indexOf(lastLetter) !== -1) {
-            delay += delay * 1.3;
+            delay += delay * 1.2;
         }
 
         // Looking for punction in the last two characters.  Could be !" or ?) or just . at the end.  We need a pause for that.
         if (word.length > 2) {
             var lastTwoLetters = word.slice(word.length - 2);
             if (/[\?\!\.\;]/.test(lastTwoLetters)) {
-                delay += delay * 1.8;
+                delay += delay * 1.5;
                 internals.sentence_break.push(internals.position - 1);
             }
         }
